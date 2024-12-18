@@ -47,21 +47,21 @@
             margin-bottom: 20px;
         }
         .navbar {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            padding: 0.5rem 0;
-            transition: all 0.3s ease;
-        }
+    background: linear-gradient(to right, #1f3b4d, #3498db); /* Dark Blue to Light Blue */
+    color: #ffffff; /* Optional: White text for better contrast */
+}
+
 
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: 700;
-            color: white !important;
+            color: rgb(255, 255, 255) !important;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .navbar-nav .nav-link {
-            color: rgba(255, 255, 255, 0.9) !important;
+            color: rgba(255, 255, 255, 0.944) !important;
             font-weight: 500;
             padding: 0.5rem 1rem;
             margin: 0 0.2rem;
@@ -160,6 +160,7 @@
     </style>
 </head>
 <body>
+    <div style="padding:2%;">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -211,30 +212,8 @@
             </div>
         </div>
     </nav>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="#">ATS Score App</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Scoring Rules</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Resume Checker</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
+</div>
+
 
     <!-- Hero Section -->
     <div class="hero-section">
@@ -348,7 +327,7 @@
         <div class="container">
             <h2 class="mb-4">Ready to Maximize Your Job Application Potential?</h2>
             <p class="lead mb-5">Get your comprehensive ATS score and resume optimization report now!</p>
-            <a href="#" class="btn btn-light btn-lg">Check Your Resume</a>
+           <button> <a href="/mainpage" class="btn btn-light btn-lg">Check Your Resume</a></button>
         </div>
     </div>
 
