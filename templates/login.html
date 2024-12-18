@@ -1,0 +1,307 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Modern Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+            --secondary-gradient: linear-gradient(135deg, #7F7FD5 0%, #86A8E7 50%, #91EAE4 100%);
+            --hover-gradient: linear-gradient(135deg, #000DFF 0%, #6B73FF 100%);
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--secondary-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 1;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            background: var(--primary-gradient);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            border: none;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-icon i {
+            font-size: 2.5rem;
+            background: var(--primary-gradient);
+            color: transparent;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card-body {
+            padding: 2.5rem;
+        }
+
+        .form-floating {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-floating input {
+            border-radius: 10px;
+            border: 2px solid #e1e1e1;
+            padding: 1rem 1rem;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+
+        .form-floating input:focus {
+            border-color: #000DFF;
+            box-shadow: 0 0 0 0.25rem rgba(0, 13, 255, 0.1);
+        }
+
+        .form-floating label {
+            padding: 1rem;
+        }
+
+        .form-check {
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-check-input {
+            width: 1.2rem;
+            height: 1.2rem;
+            margin-left: -2rem;
+            border-color: #6B73FF;
+        }
+
+        .form-check-input:checked {
+            background-color: #000DFF;
+            border-color: #000DFF;
+        }
+
+        .btn-login {
+            padding: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background: var(--hover-gradient);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 13, 255, 0.3);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .signup-link a {
+            color: #000DFF;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            color: #6B73FF;
+            text-decoration: underline;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #e1e1e1;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .alert {
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating-shapes div {
+            position: fixed;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .shape1 {
+            top: 20%;
+            left: 10%;
+            width: 100px;
+            height: 100px;
+            background: #000DFF;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape2 {
+            top: 60%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background: #6B73FF;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape3 {
+            bottom: 10%;
+            left: 20%;
+            width: 80px;
+            height: 80px;
+            background: #91EAE4;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: float 7s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape1"></div>
+        <div class="shape2"></div>
+        <div class="shape3"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="card">
+            <div class="card-header">
+                <div class="header-icon">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h4 class="card-title">Welcome Back</h4>
+            </div>
+            <div class="card-body">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-floating">
+                        {{ form.email }}
+                        <label for="{{ form.email.id_for_label }}">
+                            <i class="fas fa-envelope me-2"></i>Email Address
+                        </label>
+                        {% if form.email.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.email.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-floating">
+                        {{ form.password }}
+                        <label for="{{ form.password.id_for_label }}">
+                            <i class="fas fa-lock me-2"></i>Password
+                        </label>
+                        {% if form.password.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.password.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember Me</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-login w-100">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login
+                    </button>
+                    
+                </form>
+
+                <div class="divider">
+                    <span class="bg-white px-3">or</span>
+                </div>
+
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up now</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

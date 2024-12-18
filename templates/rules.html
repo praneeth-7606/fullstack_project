@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Resume Rules & Guidelines</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --secondary: #0369a1;
+            --success: #16a34a;
+            --warning: #ca8a04;
+            --danger: #dc2626;
+            --background: #f8fafc;
+            --text: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .rule-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .example-box {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+
+        .do-box {
+            border-left: 4px solid var(--success);
+            background: #f0fdf4;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .dont-box {
+            border-left: 4px solid var(--danger);
+            background: #fef2f2;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .tip-box {
+            border-left: 4px solid var(--warning);
+            background: #fefce8;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .icon-check {
+            color: var(--success);
+        }
+
+        .icon-x {
+            color: var(--danger);
+        }
+
+        .format-table {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .format-table th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        .back-to-top:hover {
+            opacity: 1;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="display-5 fw-bold">Resume Guidelines</h1>
+            <p class="lead">Essential rules for creating an ATS-friendly resume</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mb-5">
+        <!-- Quick Navigation -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="rule-card">
+                    <h2 class="h5 mb-3">Quick Navigation</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <ul class="list-unstyled">
+                                <li><a href="#format">File Format Requirements</a></li>
+                                <li><a href="#structure">Resume Structure</a></li>
+                                <li><a href="#sections">Required Sections</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="list-unstyled">
+                                <li><a href="#formatting">Formatting Guidelines</a></li>
+                                <li><a href="#keywords">Keywords & Skills</a></li>
+                                <li><a href="#checklist">Final Checklist</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- File Format -->
+        <section id="format" class="mb-5">
+            <h2 class="mb-4">File Format Requirements</h2>
+            <div class="rule-card">
+                <h3 class="h5 mb-3">Acceptable Formats</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="do-box">
+                            <h4 class="h6">Recommended Formats:</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li>✓ .docx (Microsoft Word)</li>
+                                <li>✓ .pdf (Adobe PDF)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="dont-box">
+                            <h4 class="h6">Avoid These Formats:</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li>✗ .doc (Legacy Word)</li>
+                                <li>✗ .rtf (Rich Text Format)</li>
+                                <li>✗ .txt (Plain Text)</li>
+                                <li>✗ Image files (.jpg, .png)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Structure -->
+        <section id="structure" class="mb-5">
+            <h2 class="mb-4">Resume Structure</h2>
+            <div class="rule-card">
+                <h3 class="h5 mb-3">Required Order of Sections</h3>
+                <ol class="mb-4">
+                    <li>Contact Information</li>
+                    <li>Professional Summary/Objective</li>
+                    <li>Work Experience</li>
+                    <li>Education</li>
+                    <li>Skills</li>
+                    <li>Additional Sections (Optional)</li>
+                </ol>
+                
+                <div class="tip-box">
+                    <h4 class="h6">Pro Tip:</h4>
+                    <p class="mb-0">Keep your resume between 1-2 pages. For entry-level positions, stick to one page.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Required Sections -->
+        <section id="sections" class="mb-5">
+            <h2 class="mb-4">Required Sections Detail</h2>
+            
+            <!-- Contact Information -->
+            <div class="rule-card">
+                <h3 class="h5">Contact Information</h3>
+                <div class="example-box">
+                    Full Name
+                    Email Address
+                    Phone Number
+                    Location (City, State)
+                    LinkedIn Profile (Optional)
+                </div>
+                <div class="do-box mt-3">
+                    <h4 class="h6">Format Requirements:</h4>
+                    <ul class="list-unstyled mb-0">
+                        <li>✓ Use professional email address</li>
+                        <li>✓ Include country code for phone numbers</li>
+                        <li>✓ Write location as "City, State"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="rule-card">
+                <h3 class="h5">Work Experience</h3>
+                <div class="example-box">
+                    Company Name
+                    Job Title
+                    Dates (MM/YYYY - MM/YYYY)
+                    Location
+                    • Achievement/Responsibility 1
+                    • Achievement/Responsibility 2
+                </div>
+                <div class="tip-box">
+                    <h4 class="h6">Important:</h4>
+                    <p class="mb-0">Use bullet points to list achievements. Start each bullet with an action verb.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formatting Guidelines -->
+        <section id="formatting" class="mb-5">
+            <h2 class="mb-4">Formatting Guidelines</h2>
+            <div class="rule-card">
+                <h3 class="h5 mb-3">Text Formatting</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="do-box">
+                            <h4 class="h6">Recommended:</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li>✓ Font: Arial, Calibri, Times New Roman</li>
+                                <li>✓ Size: 10-12pt for body text</li>
+                                <li>✓ Headings: 14-16pt</li>
+                                <li>✓ Standard margins (1 inch)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="dont-box">
+                            <h4 class="h6">Avoid:</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li>✗ Fancy fonts</li>
+                                <li>✗ Text boxes</li>
+                                <li>✗ Tables</li>
+                                <li>✗ Headers/Footers</li>
+                                <li>✗ Images/Graphics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keywords & Skills -->
+        <section id="keywords" class="mb-5">
+            <h2 class="mb-4">Keywords & Skills</h2>
+            <div class="rule-card">
+                <h3 class="h5 mb-3">Keyword Optimization</h3>
+                <div class="tip-box mb-3">
+                    <h4 class="h6">How to Include Keywords:</h4>
+                    <p class="mb-0">Use relevant keywords from the job description naturally throughout your resume. Include both the spelled-out version and acronym where applicable (e.g., "Artificial Intelligence (AI)").</p>
+                </div>
+                
+                <div class="example-box">
+                    <h4 class="h6">Skills Section Example:</h4>
+                    Technical Skills: Python, Java, SQL, AWS
+                    Soft Skills: Project Management, Team Leadership
+                    Industry Knowledge: Agile Methodology, SDLC
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Checklist -->
+        <section id="checklist" class="mb-5">
+            <h2 class="mb-4">Final Submission Checklist</h2>
+            <div class="rule-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="h5 mb-3">Before Submitting</h3>
+                        <div class="checklist-item">
+                            <input type="checkbox" class="form-check-input">
+                            <label>File is in .docx or .pdf format</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" class="form-check-input">
+                            <label>Filename includes your name</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" class="form-check-input">
+                            <label>All sections are properly ordered</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" class="form-check-input">
+                            <label>Contact information is current</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" class="form-check-input">
+                            <label>No spelling/grammar errors</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="h5 mb-3">Final Checks</h3>
+                        <div class="checklist-item">
+                            <input type="checkbox" class="form-check-input">
+                            <label>Dates are in MM/YYYY format</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" class="form-check-input">
+                            <label>Font is ATS-friendly</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" class="form-check-input">
+                            <label>No special characters/symbols</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" class="form-check-input">
+                            <label>Keywords match job description</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" class="form-check-input">
+                            <label>File size is under 5MB</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">↑ Back to Top</a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS for Back to Top functionality -->
+   
+
+<!-- Previous HTML content remains the same until the script section -->
+
+    <!-- Custom JS for Back to Top functionality and Checkbox Management -->
+    <script>
+        // Show/hide back to top button based on scroll position
+        window.onscroll = function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        };
+
+        // Smooth scroll to top
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Initialize checkboxes from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.form-check-input');
+            checkboxes.forEach((checkbox, index) => {
+                // Load saved state from localStorage
+                checkbox.checked = localStorage.getItem('checkbox_' + index) === 'true';
+                
+                // Add change event listener to save state
+                checkbox.addEventListener('change', function() {
+                    localStorage.setItem('checkbox_' + index, this.checked);
+                    
+                    // Update progress
+                    updateProgress();
+                });
+            });
+            
+            // Initial progress update
+            updateProgress();
+        });
+
+        // Function to update progress
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.form-check-input');
+            const totalCheckboxes = checkboxes.length;
+            const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked).length;
+            
+            // Calculate percentage
+            const percentage = Math.round((checkedCheckboxes / totalCheckboxes) * 100);
+            
+            // Create or update progress element
+            let progressElement = document.getElementById('completion-progress');
+            if (!progressElement) {
+                progressElement = document.createElement('div');
+                progressElement.id = 'completion-progress';
+                progressElement.className = 'alert alert-info mt-3';
+                document.querySelector('#checklist .rule-card').appendChild(progressElement);
+            }
+            
+            // Update progress message
+            progressElement.innerHTML = `
+                <h4 class="h6 mb-2">Completion Progress:</h4>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" 
+                         style="width: ${percentage}%" 
+                         aria-valuenow="${percentage}" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100">
+                        ${percentage}%
+                    </div>
+                </div>
+                <p class="small mt-2 mb-0">${checkedCheckboxes} of ${totalCheckboxes} items completed</p>
+            `;
+        }
+
+        // Add smooth scrolling to all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Reset checklist button
+        const resetButton = document.createElement('button');
+        resetButton.className = 'btn btn-outline-danger mt-3';
+        resetButton.innerHTML = 'Reset Checklist';
+        resetButton.onclick = function() {
+            if (confirm('Are you sure you want to reset all checkboxes?')) {
+                const checkboxes = document.querySelectorAll('.form-check-input');
+                checkboxes.forEach((checkbox, index) => {
+                    checkbox.checked = false;
+                    localStorage.setItem('checkbox_' + index, 'false');
+                });
+                updateProgress();
+            }
+        };
+        document.querySelector('#checklist .rule-card').appendChild(resetButton);
+    </script>
+</body>
+</html>

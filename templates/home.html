@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Score Application - Resume Optimization</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS */
+        body {
+            background-color: #f4f6f9;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .features-section {
+            padding: 50px 0;
+            background-color: white;
+        }
+        .feature-card {
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .benefits-section {
+            background-color: #f8f9fa;
+            padding: 70px 0;
+        }
+        .how-it-works-section {
+            padding: 70px 0;
+            background-color: white;
+        }
+        .process-step {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .process-icon {
+            font-size: 3rem;
+            color: greenyellow;
+            margin-bottom: 20px;
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            margin: 0 0.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        /* Updated styles for both login and logout buttons */
+        .nav-item .btn-auth {
+            background-color: transparent;
+            border: 2px solid white;
+            border-radius: 25px;
+            padding: 0.5rem 1.5rem;
+            color: white !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item .btn-auth:hover {
+            background-color: white;
+            color: var(--primary-color) !important;
+        }
+
+        /* Style for the user welcome message */
+        .user-welcome {
+            color: white !important;
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+
+        /* Logout button specific styles */
+        .btn-logout {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-logout:hover {
+            background-color: rgba(255, 0, 0, 0.1);
+            border-color: rgba(255, 0, 0, 0.5);
+            color: white !important;
+        }
+        main {
+            flex: 1;
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <i class="fas fa-cube me-2"></i>MYATS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}"><i class="fas fa-info-circle me-1"></i>About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'rules' %}"><i class="fas fa-briefcase me-1"></i>Rules</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-envelope me-1"></i>Contact</a>
+                    </li> -->
+                    
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="nav-link user-welcome">
+                                <i class="fas fa-user me-1"></i>Welcome, {{ user.name }}
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <form action="{% url 'logout' %}" method="POST" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="nav-link btn-auth btn-logout">
+                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                                </button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item ms-2">
+                            <a class="nav-link btn-auth" href="{% url 'login' %}">
+                                <i class="fas fa-sign-in-alt me-1"></i>Login
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">ATS Score App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Scoring Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Resume Checker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="display-4 mb-4">Unlock Your Resume's Potential</h1>
+            <p class="lead mb-5">Optimize Your Job Application with Advanced ATS Scoring</p>
+            <a href="#" class="btn btn-light btn-lg">Check Your Resume Score</a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Why ATS Scoring Matters</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">Precise Matching</h3>
+                            <p class="card-text">Align your resume perfectly with job descriptions, increasing your chances of passing initial screening.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">Keyword Optimization</h3>
+                            <p class="card-text">Identify and incorporate critical keywords that recruiters and ATS systems look for.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">Instant Feedback</h3>
+                            <p class="card-text">Receive comprehensive insights to improve your resume's visibility and impact.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="how-it-works-section">
+        <div class="container">
+            <h2 class="text-center mb-5">How Our ATS Score Works</h2>
+            <div class="row">
+                <div class="col-md-4 process-step">
+                    <div class="process-icon">1</div>
+                    <h3>Upload Resume</h3>
+                    <p>Submit your current resume in a standard format (PDF or DOCX).</p>
+                </div>
+                <div class="col-md-4 process-step">
+                    <div class="process-icon">2</div>
+                    <h3>Input Job Description</h3>
+                    <p>Paste the job description you're applying for into our system.</p>
+                </div>
+                <div class="col-md-4 process-step">
+                    <div class="process-icon">3</div>
+                    <h3>Get Comprehensive Score</h3>
+                    <p>Receive a detailed ATS score with actionable improvement recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="benefits-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Benefits of ATS Scoring</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Increase Interview Chances</h3>
+                            <p class="card-text">Studies show that 75% of resumes are rejected before reaching a human recruiter. Our ATS scoring helps you beat the automated screening.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Tailored Optimization</h3>
+                            <p class="card-text">Get specific, job-specific recommendations to align your resume with exact job requirements and industry keywords.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Competitive Edge</h3>
+                            <p class="card-text">Stand out from other applicants by understanding and implementing ATS best practices in your resume.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Continuous Improvement</h3>
+                            <p class="card-text">Track your resume's progress and see how small changes can significantly improve your ATS score.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="cta-section bg-primary text-white text-center py-5">
+        <div class="container">
+            <h2 class="mb-4">Ready to Maximize Your Job Application Potential?</h2>
+            <p class="lead mb-5">Get your comprehensive ATS score and resume optimization report now!</p>
+            <a href="#" class="btn btn-light btn-lg">Check Your Resume</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2024 ATS Score Application. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
