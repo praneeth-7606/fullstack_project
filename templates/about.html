@@ -154,58 +154,7 @@
     </style>
 </head>
 <body>
-    <!-- <div style="padding-bottom: 5%;">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <i class="fas fa-cube me-2"></i>MYATS
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">
-                            <i class="fas fa-home me-1"></i>Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}"><i class="fas fa-info-circle me-1"></i>About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'rules' %}"><i class="fas fa-briefcase me-1"></i>Rules</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-envelope me-1"></i>Contact</a>
-                    </li> -->
-                    
-                    <!-- {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <span class="nav-link user-welcome">
-                                <i class="fas fa-user me-1"></i>Welcome, {{ user.name }}
-                            </span>
-                        </li>
-                        <li class="nav-item">
-                            <form action="{% url 'logout' %}" method="POST" class="d-inline">
-                                {% csrf_token %}
-                                <button type="submit" class="nav-link btn-auth btn-logout">
-                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
-                                </button>
-                            </form>
-                        </li>
-                    {% else %}
-                        <li class="nav-item ms-2">
-                            <a class="nav-link btn-auth" href="{% url 'login' %}">
-                                <i class="fas fa-sign-in-alt me-1"></i>Login
-                            </a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div> -->
+    
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -268,7 +217,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-section py-5">
+    <section class="stats-section py-5" id="states">
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">

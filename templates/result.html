@@ -10,6 +10,12 @@
         <h1>Your ATS Score</h1>
         <p>The match score for your resume and job description is <strong>{{ ats_score }}%</strong>.</p>
         <a href="{% url 'home' %}">Back</a>
+        <button onclick="this.innerText=this.innerText==='ON'?'OFF':'ON'">OFF</button>
+        <button onclick="this.innerText=this.innerText==='ON'?'OFF':'ON'">ON</button>
+        <!-- <input type="radio">mybutton</button>
+          -->
+        <input type="radio" name="mybutton"> 
+
     </div>
 </body>
 </html>

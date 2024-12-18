@@ -5,162 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATS Score Application - Resume Optimization</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Custom CSS */
-        body {
-            background-color: #f4f6f9;
-        }
-        .hero-section {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
-        .features-section {
-            padding: 50px 0;
-            background-color: white;
-        }
-        .feature-card {
-            transition: transform 0.3s ease;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-        .benefits-section {
-            background-color: #f8f9fa;
-            padding: 70px 0;
-        }
-        .how-it-works-section {
-            padding: 70px 0;
-            background-color: white;
-        }
-        .process-step {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .process-icon {
-            font-size: 3rem;
-            color: greenyellow;
-            margin-bottom: 20px;
-        }
-        .navbar {
-    background: linear-gradient(to right, #1f3b4d, #3498db); /* Dark Blue to Light Blue */
-    color: #ffffff; /* Optional: White text for better contrast */
+    
+<style>
+    /* Custom CSS */
+body {
+    background-color: #f4f6f9;
+}
+.hero-section {
+    background: linear-gradient(135deg, #6a11cb 0%, #25c3fc 100%);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+.features-section {
+    padding: 50px 0;
+    background-color: white;
+}
+.feature-card {
+    transition: transform 0.3s ease;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+.benefits-section {
+    background-color: #f8f9fa;
+    padding: 70px 0;
+}
+.works-section {
+    padding: 70px 0;
+    background-color: white;
+}
+.process-step {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.process-icon {
+    font-size: 3rem;
+    color: greenyellow;
+    margin-bottom: 20px;
+}
+.navbar {
+background: linear-gradient(to right, #1f3b4d, #3498db); /* Dark Blue to Light Blue */
+color: #ffffff; /* Optional: White text for better contrast */
 }
 
 
-        .navbar-brand {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: rgb(255, 255, 255) !important;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: rgb(255, 255, 255) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .navbar-nav .nav-link {
-            color: rgba(255, 255, 255, 0.944) !important;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            margin: 0 0.2rem;
-            transition: all 0.3s ease;
-        }
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.944) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+    transition: all 0.3s ease;
+}
 
-        .navbar-nav .nav-link:hover {
-            color: white !important;
-            transform: translateY(-2px);
-        }
+.navbar-nav .nav-link:hover {
+    color: white !important;
+    transform: translateY(-2px);
+}
 
-        /* Updated styles for both login and logout buttons */
-        .nav-item .btn-auth {
-            background-color: transparent;
-            border: 2px solid white;
-            border-radius: 25px;
-            padding: 0.5rem 1.5rem;
-            color: white !important;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
+/* Updated styles for both login and logout buttons */
+.nav-item .btn-auth {
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    color: white !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
 
-        .nav-item .btn-auth:hover {
-            background-color: white;
-            color: var(--primary-color) !important;
-        }
+.nav-item .btn-auth:hover {
+    background-color: white;
+    color: var(--primary-color) !important;
+}
 
-        /* Style for the user welcome message */
-        .user-welcome {
-            color: white !important;
-            margin-right: 1rem;
-            font-weight: 500;
-        }
+/* Style for the user welcome message */
+.user-welcome {
+    color: white !important;
+    margin-right: 1rem;
+    font-weight: 500;
+}
 
-        /* Logout button specific styles */
-        .btn-logout {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
+/* Logout button specific styles */
+.btn-logout {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
 
-        .btn-logout:hover {
-            background-color: rgba(255, 0, 0, 0.1);
-            border-color: rgba(255, 0, 0, 0.5);
-            color: white !important;
-        }
-        main {
-            flex: 1;
-            padding: 4rem 0;
-            background-color: #f8f9fa;
-        }
+.btn-logout:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 0, 0, 0.5);
+    color: white !important;
+}
+main {
+    flex: 1;
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
 
-        .form-container {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-            transition: transform 0.3s ease;
-        }
+.form-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
 
-        .form-container:hover {
-            transform: translateY(-5px);
-        }
+.form-container:hover {
+    transform: translateY(-5px);
+}
 
-        /* Style for the user welcome message */
-        .user-welcome {
-            color: white !important;
-            margin-right: 1rem;
-            font-weight: 500;
-        }
+/* Style for the user welcome message */
+.user-welcome {
+    color: white !important;
+    margin-right: 1rem;
+    font-weight: 500;
+}
 
-        /* Logout button specific styles */
-        .btn-logout {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
+/* Logout button specific styles */
+.btn-logout {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
 
-        .btn-logout:hover {
-            background-color: rgba(255, 0, 0, 0.1);
-            border-color: rgba(255, 0, 0, 0.5);
-            color: white !important;
-        }
-        main {
-            flex: 1;
-            padding: 4rem 0;
-            background-color: #f8f9fa;
-        }
+.btn-logout:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 0, 0, 0.5);
+    color: white !important;
+}
+main {
+    flex: 1;
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
 
-        .form-container {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-            transition: transform 0.3s ease;
-        }
+.form-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+</style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+   
 
-    </style>
 </head>
 <body>
-    <div style="padding:2%;">
+    <div>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -183,14 +185,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'rules' %}"><i class="fas fa-briefcase me-1"></i>Rules</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-envelope me-1"></i>Contact</a>
-                    </li> -->
+                    
                     
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <span class="nav-link user-welcome">
-                                <i class="fas fa-user me-1"></i>Welcome, {{ user.name }}
+                                <i class="fas fa-user me-1"></i>
                             </span>
                         </li>
                         <li class="nav-item">
@@ -258,7 +258,7 @@
     </div>
 
     <!-- How It Works Section -->
-    <div class="how-it-works-section">
+    <div class="works-section">
         <div class="container">
             <h2 class="text-center mb-5">How Our ATS Score Works</h2>
             <div class="row">
@@ -327,12 +327,12 @@
         <div class="container">
             <h2 class="mb-4">Ready to Maximize Your Job Application Potential?</h2>
             <p class="lead mb-5">Get your comprehensive ATS score and resume optimization report now!</p>
-           <button> <a href="/mainpage" class="btn btn-light btn-lg">Check Your Resume</a></button>
+           
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="bg-dark text-white text-center py-4">
         <div class="container">
             <p>&copy; 2024 ATS Score Application. All Rights Reserved.</p>
         </div>

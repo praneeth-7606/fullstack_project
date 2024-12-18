@@ -74,18 +74,17 @@ class LoginForm(forms.Form):
         widget=forms.EmailInput(attrs={
             'class': 'form-control',
             'placeholder': 'Email Address',
-            'id': 'email'
+            'id': 'email',
+            'value':''
         })
     )
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Password',
-            'id': 'password'
+            'id': 'password',
+            'value':''
         })
     )
 
-class Login():
-    pass
-# class LoginForm(AuthenticationForm):
-#     pass
+
