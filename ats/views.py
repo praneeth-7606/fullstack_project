@@ -190,12 +190,19 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from PyPDF2 import PdfReader
+from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.http import HttpResponse
+from django.middleware.cache import CacheMiddleware
+from django.views.decorators.cache import cache_control
 from .forms import ResumeUploadForm, ATSForm, SignUpForm, LoginForm
 from .models import UserProfile
+from decouple import config
 
 # Hugging Face API constants
-HUGGING_FACE_API = "https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2"
-API_TOKEN = "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"
+HUGGING_FACE_API = config('HUGGING_FACE_API')
+API_TOKEN = config('API_TOKEN')
+
 
 # Utility function to extract text from a PDF
 def extract_text_from_pdf(file):
@@ -240,7 +247,7 @@ def calculate_ats_score(request):
 
         if not resume_file or not job_description:
             messages.error(request, "Please provide both a resume and a job description.")
-            return redirect('home')
+            return redirect('mainpage')
 
         # Save the resume file
         file_path = default_storage.save(f'resumes/{resume_file.name}', resume_file)
@@ -259,7 +266,7 @@ def calculate_ats_score(request):
                 ats_score = calculate_score(resume_text, job_description)
 
             messages.success(request, f"ATS Score Calculated: {ats_score}%")
-            return render(request, 'home.html', {'ats_score': ats_score})
+            return render(request, 'mainpage.html', {'ats_score': ats_score})
 
         except Exception as e:
             messages.error(request, f"An error occurred: {str(e)}")
@@ -290,10 +297,24 @@ def signup(request):
             )
             login(request, user)
             messages.success(request, 'Account created successfully!')
-            return redirect('home')
+            return redirect('login')
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+
+
+
+def login_required_message(view_func):
+    """Custom login_required decorator that shows a message."""
+    def wrapped_view(request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.error(request, "Please log in to navigate to the main page.")
+            return redirect('login')  # Redirect to the login page
+        return view_func(request, *args, **kwargs)
+    return wrapped_view
+
+
 
 # Login view
 def login_view(request):
@@ -314,19 +335,29 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
+# @login_required
+# def logout_view(request):
+#     logout(request)
+#     messages.success(request, 'Logged out successfully!')
+#     return redirect('login')
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required
 def logout_view(request):
+    """Logout user and prevent access to cached pages."""
     logout(request)
     messages.success(request, 'Logged out successfully!')
     return redirect('login')
+
 
 # Home view
 def home(request):
     return render(request, 'home.html')
 def about(request):
     return render(request,'about.html')
+@login_required(login_url='login')  # Redirects to 'login' if not logged in
 def mainpage(request):
-    return render(request,'mainpage.html')
+    return render(request, 'mainpage.html')
 
 def rules(request):
     return render(request,'rules.html')

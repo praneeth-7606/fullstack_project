@@ -47,7 +47,7 @@
             margin-bottom: 20px;
         }
         .navbar {
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             padding: 0.5rem 0;
             transition: all 0.3s ease;
         }
@@ -87,6 +87,42 @@
         .nav-item .btn-auth:hover {
             background-color: white;
             color: var(--primary-color) !important;
+        }
+
+        /* Style for the user welcome message */
+        .user-welcome {
+            color: white !important;
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+
+        /* Logout button specific styles */
+        .btn-logout {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-logout:hover {
+            background-color: rgba(255, 0, 0, 0.1);
+            border-color: rgba(255, 0, 0, 0.5);
+            color: white !important;
+        }
+        main {
+            flex: 1;
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px);
         }
 
         /* Style for the user welcome message */
